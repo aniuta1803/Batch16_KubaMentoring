@@ -30,7 +30,7 @@ public class Test1 {
         Name.sendKeys("Ana");
         WebElement Email = driver.findElement(By.cssSelector("#inputEmail4"));
         Email.sendKeys("aniuta111@gmail.com");
-        WebElement Password = driver.findElement(By.xpath("#inputPassword4"));
+        WebElement Password = driver.findElement(By.cssSelector("#inputPassword4"));
         Password.sendKeys("113456a");
         WebElement Company = driver.findElement(By.cssSelector("#company"));
         Company.sendKeys( "Codefish");
@@ -71,4 +71,7 @@ public class Test1 {
 
     }
 
-}
+
+    }
+
+
