@@ -24,32 +24,51 @@ public class AlertsPractice {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.get("https://www.lambdatest.com/selenium-playground");
 
-        WebElement JSAlert = driver.findElement(By.linkText("Javascript Alerts"));
-        JSAlert.click();
+        WebElement jsAlerts= driver.findElement(By.linkText("Javascript Alerts"));
+        jsAlerts.click();
+
+
+
+        WebElement js= driver.findElement(By.xpath("//p[contains(text(),'JS Alert')]//button"));
+        js.click();
+
         Thread.sleep(2000);
-        Alert alert =driver.switchTo().alert();
+
+        Alert alert=driver.switchTo().alert();
+
+        String actualText= alert.getText().trim();
+        String expectedText ="Alert box!";
+        Assert.assertEquals(actualText,expectedText);
+
         alert.accept();
 
-        WebElement ConfirmBox = driver.findElement(By.linkText("Confirm box:"));
-        ConfirmBox.click();
-        String actualText = alert.getText().trim();
-        String expecytedText="Press a button!";
-        Assert.assertEquals(actualText,expecytedText);
+        WebElement confirm = driver.findElement(By.xpath("//p[contains(text(),'Confirm box:')]//button"));
+
+        confirm.click();
+
+        String actual2=alert.getText().trim();
+        String expected2="Press a button!";
+        Assert.assertEquals(actual2,expected2);
+
         alert.dismiss();
 
-      WebElement  Message = driver.findElement(By.cssSelector("#confirm-demo"));
-        System.out.println(Message.getText());
+        WebElement cancelMsg= driver.findElement(By.cssSelector("#confirm-demo"));
+        System.out.println(cancelMsg.getText().trim());
 
-        WebElement PromptButton = driver.findElement(By.linkText("Prompt box:"));
-        PromptButton.click();
+        WebElement prompt=driver.findElement(By.xpath("//p[contains(text(),'Prompt box:')]//button"));
+        prompt.click();
 
         alert.sendKeys("Anna");
         alert.accept();
 
-        WebElement Text1= driver.findElement(By.cssSelector("#prompt-demo"));
-       String ActualT1 = Text1.getText();
-        String expectedText1="You have entered 'Anna' !";
-        Assert.assertEquals(ActualT1,expectedText1);
+        WebElement demoMsg= driver.findElement(By.cssSelector("#prompt-demo"));
+
+        String actualPrompt=demoMsg.getText().trim();
+        String expectedPrompt="You have entered 'Anna' !";
+
+        Assert.assertEquals(actualPrompt,expectedPrompt);
+
+
 
 
 
